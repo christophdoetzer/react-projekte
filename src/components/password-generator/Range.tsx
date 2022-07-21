@@ -1,0 +1,20 @@
+import React from "react";
+
+interface Props {
+    value: number
+    changing(value: number): any,
+}
+
+export const Range: React.FC<Props> = (props) => {
+    // const [value, setValue] = React.useState(0)
+    const handleChange = (e:any) => {
+        props.changing(e.target.value)
+    }
+
+    return (
+        <div className="length">
+            <label htmlFor="range">Length</label>
+            <input className="range" id="range" type="range" value={props.value} onChange={handleChange} name="range" />
+        </div>
+    );
+}

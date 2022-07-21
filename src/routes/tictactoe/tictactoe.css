@@ -1,0 +1,55 @@
+@import url('../../colors.css');
+.tictactoe {
+    height: 50vh;
+    width: 40%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.result {
+    height: 5vh;
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 3rem;
+    font-weight: 500;
+}
+.fields {
+    width: 90%;
+    height: 35vh;
+
+    display: grid;
+    grid-template-columns: 33% 33% 33.7%;
+    grid-template-rows: 33% 33% 33%;
+    gap: 0.15rem;
+
+    background-color: var(--white);
+}
+.fields button {
+    border-style: none;
+    background-color: var(--grey);
+}
+.result-text {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.new-game {
+    background-color: var(--gold);
+    border-style: none;
+    height: 4vh;
+    width: 50%;
+
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--grey);
+    border-radius: 1rem;
+}
+.output {
+    font-size: 1rem;
+}

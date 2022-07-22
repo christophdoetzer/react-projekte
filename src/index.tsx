@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { Navigate, BrowserRouter, Routes, Route } from 'react-router-dom'
 import TicTacToe from './routes/tictactoe/TicTacToe';
-import { Todolist } from './routes/TodoList';
+import Todolist from './routes/todolist/Todolist';
 import PasswordGenerator from './routes/password-generator/PasswordGenerator'
 import { Home } from './routes/home/Home';
 

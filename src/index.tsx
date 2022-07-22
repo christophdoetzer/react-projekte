@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import { Navigate, BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import './index.css';
+
+import App from './App';
 import TicTacToe from './routes/tictactoe/TicTacToe';
 import Todolist from './routes/todolist/Todolist';
 import PasswordGenerator from './routes/password-generator/PasswordGenerator'
@@ -16,7 +18,9 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+
           <Route path="/" element={<Navigate to="/home" />} />
+
           <Route path="home" element={<Home />} />
           <Route path="tictactoe" element={<TicTacToe />} />
           <Route path="todolist" element={<Todolist />} />

@@ -5,25 +5,19 @@ interface Props {
 }
 
 export const Form: React.FC<Props> = (props) => {
-    const [formData, setFormData] = useState({
-        text: ''
-    })
+    const [formData, setFormData] = useState('')
     function handleChange(event: any) {
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [event.target.name]: event.target.value
-            }
-        })
+        setFormData(event.target.value)
     }
+
     function handleSubmit(event: any) {
         event.preventDefault();
-        props.add(formData.text)
-        setFormData({ text: '' })
+        props.add(formData)
+        setFormData('')
     }
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="New Task..." onChange={handleChange} name="text" value={formData.text}></input>
+            <input type="text" placeholder="New Task..." onChange={handleChange} name="text" value={formData}></input>
             <button type="submit">Add</button>
         </form>
     );

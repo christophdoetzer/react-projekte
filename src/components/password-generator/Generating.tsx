@@ -1,13 +1,8 @@
 interface Props {
-    generate(): void;
+    generate: () => void;
 }
-
 export const Generating: React.FC<Props> = (props) => {
-    const handleClick = () => {
-        props.generate()
-    }
-
     return (
-        <button className="generating" onClick={handleClick}>New Password</button>
+        <button className="generating" onClick={() => props.generate()}>New Password</button>
     );
 }

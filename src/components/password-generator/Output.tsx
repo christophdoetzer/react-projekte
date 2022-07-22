@@ -3,7 +3,6 @@ interface Props {
 }
 
 export const Output: React.FC<Props> = (props) => {
-
     return (
         <h3 className="output">{props.password}</h3>
     );

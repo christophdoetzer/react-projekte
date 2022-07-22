@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+
+import './tictactoe.css';
+
 import { Field } from '../../components/tictactoe/Field';
 import { NewGame } from '../../components/tictactoe/NewGame';
 import { Result } from '../../components/tictactoe/Result';
-import './tictactoe.css';
 
 function check(fields: number[]): number {
   const win0 = [0, 1, 2]
@@ -27,52 +29,53 @@ function check(fields: number[]): number {
 function TicTacToe() {
   const [result, setResult] = React.useState(0)
   const [fields, setFields] = React.useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
-  const [player, setPlayer] = React.useState(1)
+  const [currentPlayer, setCurrentPlayer] = React.useState(1)
   const [gameOver, setGameOver] = React.useState(false)
-  const fieldElements = fields.map((field, i) => <Field key={i} id={i} click={click} status={field} gameOver={gameOver}/>)
 
+  const fieldElements = fields.map((field, i) => <Field key={i} id={i} click={click} status={field} gameOver={gameOver} />)
 
   useEffect(() => {
-      const result = check(fields)
-      if (result !== 0) {
-        setResult(result)
-        setGameOver(true)
-      }
-  },[fields])
+    const result = check(fields)
+    if (result !== 0) {
+      setResult(result)
+      setGameOver(true)
+    }
+  }, [fields])
 
 
 
   function click(id: number) {
     setFields(prevFields => {
       let newFields = [...prevFields]
-      newFields[id] = player
+      newFields[id] = currentPlayer
       return newFields
     })
-    
-    if (player === 1) {
-      setPlayer(2)
-    } else if (player === 2){
-      setPlayer(1)
+
+    if (currentPlayer === 1) {
+      setCurrentPlayer(2)
+    } else if (currentPlayer === 2) {
+      setCurrentPlayer(1)
     }
   }
 
 
-  function computer(): void {
-    let freeFields: number[] = []
-    for (let i = 0; i < fields.length; i++) {
-      if (fields[i] === 0) {
-        freeFields.push(i)
-      }
-    }
+  // function computer(): void {
+  //   let freeFields: number[] = []
+  //   for (let i = 0; i < fields.length; i++) {
+  //     if (fields[i] === 0) {
+  //       freeFields.push(i)
+  //     }
+  //   }
 
-    const random = Math.floor(Math.random() * freeFields.length)
-    setFields(prevFields => {
-      const index = freeFields[random]
-      const newFields = [...prevFields]
-      newFields[index] = 2
-      return newFields
-    })
-  }
+  //   const random = Math.floor(Math.random() * freeFields.length)
+  //   setFields(prevFields => {
+  //     const index = freeFields[random]
+  //     const newFields = [...prevFields]
+  //     newFields[index] = 2
+  //     return newFields
+  //   })
+  // }
+
   function newGame() {
     setFields([0, 0, 0, 0, 0, 0, 0, 0, 0])
     setGameOver(false)
@@ -87,7 +90,7 @@ function TicTacToe() {
       <div className='fields'>
         {fieldElements}
       </div>
-      <NewGame newGame={newGame}/>
+      <NewGame newGame={newGame} />
     </div>
   );
 }

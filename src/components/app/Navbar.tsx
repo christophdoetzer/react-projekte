@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import './app.css'
 
 interface Props {
@@ -6,18 +6,17 @@ interface Props {
 }
 
 export const Navbar: React.FC<Props> = (props) => {
+
   return (
     <nav>
-      <div className='logo'>
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <path d="M73.4428 51.1191V42.4238H81.298L98.5924 32.5914C98.8453 32.4614 99.0509 32.2916 99.1926 32.0956C99.3344 31.8997 99.4082 31.6831 99.4082 31.4635V2.13165C99.4082 1.76536 99.203 1.41368 98.8367 1.15211C98.4704 0.890542 97.9721 0.739937 97.449 0.732626L44.908 0.000399595C44.5545 -0.00505317 44.2053 0.0554455 43.8963 0.175683C43.5873 0.295921 43.3296 0.471565 43.1496 0.684579L29.387 16.8979C28.7662 17.4945 29.2358 18.8344 30.0455 25.1256C24.5952 25.1133 23.9378 24.9551 23.0603 25.6342L1.35495 40.6279C0.492501 41.1309 0.474365 41.624 0.474365 41.624L1.90238 72.4113H15.8965V100H67.3042L83.2548 92.2988C83.5293 92.1711 83.7544 91.9979 83.9102 91.7946C84.066 91.5913 84.1476 91.3641 84.1476 91.1334V59.6959C84.1476 59.3248 83.937 58.9688 83.5621 58.7064C83.1872 58.4439 82.6787 58.2965 82.1485 58.2965H64.9869C71.1772 53.3068 73.444 52.2197 73.4428 51.1191ZM45.9922 2.81485L92.788 3.467L75.7958 16.0348H34.7679L45.9922 2.81485ZM5.6055 41.624L25.2645 28.044L30.2645 28.1289L31.3187 41.624H5.6055ZM67.3042 96.3584V71.5117L80.1493 63.7512V90.3828L67.3042 96.3582V96.3584ZM78.4267 61.0953L62.3429 70.8121H47.5977L61.4253 61.0953H78.4267ZM69.4445 50.5863L50.6178 65.3799L51.3106 42.4238H69.4445V50.5863ZM81.3949 37.9574L81.8692 16.0348L95.4099 5.59923V30.7547L81.3949 37.9574Z" fill="black" />
-        </svg>
+      <Link to="/home" className="logo">
+        <img src='logo.png' alt='React logo'></img>
         <h1>{props.title}</h1>
-      </div>
+      </Link>
       <div className='links'>
-        <Link to="/todolist">Todo List</Link>
-        <Link to="/password-generator" >Password Generator</Link>
-        <Link to="/tictactoe">Tic Tac Toe</Link>
+        <Link to="/todolist" className={useLocation().pathname === '/todolist' ? 'gold' : ''}>Todo List</Link>
+        <Link to="/password-generator" className={useLocation().pathname === '/password-generator' ? 'gold' : ''} >Password Generator</Link>
+        <Link to="/tictactoe" className={useLocation().pathname === '/tictactoe' ? 'gold' : ''}>Tic Tac Toe</Link>
       </div>
     </nav>
   )

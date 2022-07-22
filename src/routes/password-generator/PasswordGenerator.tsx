@@ -16,7 +16,8 @@ function PasswordGenerator() {
     range: 60
   })
   const [password, setPassword] = React.useState('')
-  const check = (name: string) => {
+
+  const checkCheckbox = (name: string) => {
     setPreferences(prevPreferences => {
       const updatedPreferences: any = {
         ...prevPreferences,
@@ -25,7 +26,8 @@ function PasswordGenerator() {
       return updatedPreferences
     })
   }
-  const changing = (value: number) => {
+
+  const changingLength = (value: number) => {
     setPreferences(prevPreferences => {
       const updatedPreferences = {
         ...prevPreferences,
@@ -34,6 +36,7 @@ function PasswordGenerator() {
       return updatedPreferences
     })
   }
+
   const generate = () => {
     const letters: string = 'abcdefghijklmnopqrstuvwxyz'
     const lettersUppercase: string = letters.toUpperCase()
@@ -41,7 +44,6 @@ function PasswordGenerator() {
     const specialCharacters: string = '+#></!"§$$%&/()==??_-*.:,;'
 
     const number = Math.floor(preferences.range / 10) + 1
-    console.log(number);
 
 
     let passwordString = letters
@@ -54,10 +56,10 @@ function PasswordGenerator() {
     if (preferences.includeSpecialCharacters) {
       passwordString += specialCharacters
     }
+
     let password: string = ''
     for (let i = 0; i < number; i++) {
-      const random = Math.floor(Math.random() * passwordString.length)
-      password += passwordString[random]
+      password += passwordString[Math.floor(Math.random() * passwordString.length)]
     }
     setPassword(password)
   }
@@ -68,10 +70,10 @@ function PasswordGenerator() {
           <Output password={password} />
           <Copy password={password} />
         </div>
-        <Checkbox content='Include Uppercase' check={check} value={preferences.includeUppercase} id={'includeUppercase'} />
-        <Checkbox content='Include Numbers' check={check} value={preferences.includeNumbers} id={'includeNumbers'} />
-        <Checkbox content='Include Special Characters' check={check} value={preferences.includeSpecialCharacters} id={'includeSpecialCharacters'} />
-        <Range value={preferences.range} changing={changing} />
+        <Checkbox content='Include Uppercase' check={checkCheckbox} value={preferences.includeUppercase} id={'includeUppercase'} />
+        <Checkbox content='Include Numbers' check={checkCheckbox} value={preferences.includeNumbers} id={'includeNumbers'} />
+        <Checkbox content='Include Special Characters' check={checkCheckbox} value={preferences.includeSpecialCharacters} id={'includeSpecialCharacters'} />
+        <Range value={preferences.range} changing={changingLength} />
         <Generating generate={generate} />
       </div>
     </>

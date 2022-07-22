@@ -54,11 +54,10 @@ function Todolist() {
   }
   function add(text: string) {
     if (text.length > 0) {
-      if (todos.length < 13) {
+      if (todos.length < 10) {
         setTodos(prevTodos => {
           const newTodos = []
           newTodos.push(
-            ...prevTodos,
             {
               id: prevTodos.length + 1,
               content: text,
@@ -66,7 +65,9 @@ function Todolist() {
               isShown: true,
               remove: remove,
               finish: finish,
-            })
+            },
+            ...prevTodos,
+          )
           return newTodos
         })
       } else {

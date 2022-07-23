@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './Form.css'
 
 interface Props {
     add(text: string): any;

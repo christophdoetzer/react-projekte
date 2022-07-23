@@ -1,3 +1,4 @@
+import './NewGame.css'
 interface Props {
   newGame: () => void;
 }

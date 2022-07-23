@@ -1,4 +1,4 @@
-import './app.css';
+import './Footer.css'
 interface Props {
   author: string,
   year: string,

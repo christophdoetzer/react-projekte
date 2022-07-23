@@ -1,11 +1,11 @@
 import React from 'react';
 import './passwordgenerator.css';
 
-import { Checkbox } from '../../components/password-generator/Checkbox';
-import { Copy } from '../../components/password-generator/Copy';
-import { Generating } from '../../components/password-generator/Generating';
-import { Output } from '../../components/password-generator/Output';
-import { Range } from '../../components/password-generator/Range';
+import { Checkbox } from './components/Checkbox/Checkbox';
+import { Copy } from './components/Copy/Copy';
+import { Generating } from './components/Generating/Generating';
+import { Output } from './components/Output/Output';
+import { Range } from './components/Range/Range';
 
 
 function PasswordGenerator() {

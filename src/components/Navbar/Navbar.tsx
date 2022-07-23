@@ -1,5 +1,5 @@
 import { useLocation, Link } from 'react-router-dom'
-import './app.css'
+import './Navbar.css'
 
 interface Props {
   title: string,

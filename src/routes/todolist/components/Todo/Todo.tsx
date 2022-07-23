@@ -1,3 +1,4 @@
+import './Todo.css'
 interface Props {
     id: Number;
     text: String,

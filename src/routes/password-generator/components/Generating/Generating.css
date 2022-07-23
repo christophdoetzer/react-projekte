@@ -1,0 +1,9 @@
+.generating {
+    height: 4vh;
+    width: 40%;
+    border-radius: 1rem;
+    border-style: none;
+    background-color: var(--gold);
+    font-size: 1.5rem;
+    font-weight: 600;
+}

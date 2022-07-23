@@ -1,4 +1,5 @@
-import { Icon } from "./Icon";
+import { Icon } from "../Icon/Icon";
+import './Result.css'
 
 interface Props {
     winner: number,

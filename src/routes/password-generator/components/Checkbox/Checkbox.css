@@ -1,0 +1,13 @@
+.checkbox {
+    width: 60%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.input {
+    margin-right: 2%;
+    accent-color: var(--blue);
+}

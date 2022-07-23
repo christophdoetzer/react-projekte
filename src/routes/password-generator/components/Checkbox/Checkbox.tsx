@@ -1,3 +1,5 @@
+import './Checkbox.css'
+
 interface Props {
     content: string,
     value: boolean,

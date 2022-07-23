@@ -1,4 +1,5 @@
-import { Icon } from "./Icon";
+import { Icon } from "../Icon/Icon";
+import './Field.css'
 
 interface Props {
     id: number,

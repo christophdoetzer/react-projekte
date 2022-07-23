@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 
 import './tictactoe.css';
 
-import { Field } from '../../components/tictactoe/Field';
-import { NewGame } from '../../components/tictactoe/NewGame';
-import { Result } from '../../components/tictactoe/Result';
+import { Field } from './components/Field/Field';
+import { NewGame } from './components/NewGame/NewGame';
+import { Result } from './components/Result/Result';
 
 function check(fields: number[]): number {
   const win0 = [0, 1, 2]

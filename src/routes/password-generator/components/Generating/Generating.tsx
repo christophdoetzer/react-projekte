@@ -1,3 +1,4 @@
+import './Generating.css'
 interface Props {
     generate: () => void;
 }

@@ -20,3 +20,12 @@
     align-items: center;
     justify-content: space-between;
 }
+
+:root {
+    --white: #CDCDCD;
+    --black: #181818;
+    --grey: #242424;
+    --pink: #E7337C;
+    --blue: #039BA1;
+    --gold: #D9AE5F;
+}

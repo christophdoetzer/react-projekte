@@ -1,3 +1,5 @@
+import './Output.css'
+
 interface Props {
     password: string,
 }

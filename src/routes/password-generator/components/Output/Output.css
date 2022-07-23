@@ -1,0 +1,8 @@
+.output {
+    height: 4vh;
+    width: 70%;
+    border-bottom: solid;
+    border-width: 0.15rem;
+    font-size: 1.75rem;
+    font-weight: 400;
+}

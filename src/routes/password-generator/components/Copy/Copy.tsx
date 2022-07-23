@@ -1,3 +1,4 @@
+import './Copy.css'
 interface Props {
     password: string,
 }

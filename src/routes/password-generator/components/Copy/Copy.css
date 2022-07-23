@@ -1,0 +1,15 @@
+.copy {
+    height: 4vh;
+    width: 12%;
+    border-radius: 1rem;
+    border-style: none;
+    border: solid;
+    border-color: var(--white);
+    border-width: 0.15rem;
+    background-color: transparent;
+}
+
+.copy svg {
+    font-size: 2rem;
+    color: var(--pink)
+}

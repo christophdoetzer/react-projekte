@@ -31,34 +31,3 @@
 
     background-color: var(--white);
 }
-
-.fields button {
-    border-style: none;
-    background-color: var(--grey);
-}
-
-.result-text {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.new-game {
-    background-color: var(--gold);
-    border-style: none;
-    height: 4vh;
-    width: 50%;
-
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--grey);
-    border-radius: 1rem;
-
-    box-shadow: 4px 4px 4px var(--black);
-}
-
-.output {
-    font-size: 1rem;
-}

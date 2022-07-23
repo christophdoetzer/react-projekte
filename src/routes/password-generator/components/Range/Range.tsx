@@ -1,4 +1,5 @@
 import React from "react";
+import './Range.css'
 
 interface Props {
     value: number

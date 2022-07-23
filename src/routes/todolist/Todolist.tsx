@@ -1,8 +1,8 @@
 import React from 'react';
 import './todolist.css';
 
-import { Form } from '../../components/todolist/Form';
-import { Todo } from '../../components/todolist/Todo';
+import { Form } from './components/Form/Form';
+import { Todo } from './components/Todo/Todo';
 
 function Todolist() {
   const [todos, setTodos] = React.useState([{

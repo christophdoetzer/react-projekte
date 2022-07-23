@@ -2,8 +2,8 @@ import { Outlet } from 'react-router-dom'
 
 import './App.css';
 
-import { Footer } from './components/app/Footer';
-import { Navbar } from './components/app/Navbar';
+import { Footer } from './components/Footer/Footer';
+import { Navbar } from './components/Navbar/Navbar';
 
 interface informations {
   title: string,

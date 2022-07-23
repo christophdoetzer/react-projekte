@@ -1,0 +1,10 @@
+.length {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 60%;
+}
+
+.range {
+    accent-color: var(--blue);
+}

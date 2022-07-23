@@ -17,7 +17,7 @@ p {
 
 .buttons {
     height: fit-content;
-    width: 18%;
+    width: 100px;
 
     display: flex;
     flex-direction: row;
@@ -61,10 +61,11 @@ p {
 
 @media (max-width: 768px) {
     .buttons {
-        width: 25%;
+        width: 100px;
     }
 
     .todo {
         width: 95%;
+        padding: 5px;
     }
 }

@@ -1,8 +1,8 @@
 .new-game {
     background-color: var(--gold);
     border-style: none;
-    height: 4vh;
-    width: 50%;
+    height: fit-content;
+    padding: 10px;
 
     font-size: 1.75rem;
     font-weight: 700;

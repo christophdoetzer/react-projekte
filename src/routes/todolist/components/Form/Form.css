@@ -1,6 +1,6 @@
 form {
-    width: 100%;
-    height: 4vh;
+    width: 70%;
+    height: fit-content;
 
     display: flex;
     flex-direction: row;
@@ -29,15 +29,20 @@ form input:focus {
 }
 
 form button {
-    height: 4vh;
-    width: 15%;
-    border-radius: 1rem;
+    border-radius: 2rem;
     border-style: none;
     color: var(--grey);
     background-color: var(--gold);
 
-    font-size: 1.5rem;
-    font-weight: 600;
-
     box-shadow: 4px 4px 4px var(--black);
+}
+
+form svg {
+    font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 95%;
+    }
 }

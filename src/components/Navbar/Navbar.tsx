@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom'
 import './Navbar.css'
 
@@ -6,12 +7,23 @@ interface Props {
 }
 
 export const Navbar: React.FC<Props> = (props) => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   return (
     <nav>
       <Link to="/home" className="logo">
-        <img src='logo.png' alt='React logo'></img>
-        <h1>{props.title}</h1>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' alt='React logo'></img>
+
+        {width > 600 && <h1>{props.title}</h1>}
       </Link>
       <div className='links'>
         <Link to="/todolist" className={useLocation().pathname === '/todolist' ? 'gold' : ''}>Todo List</Link>

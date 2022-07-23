@@ -1,5 +1,8 @@
 .result-text {
+    margin-top: 50px;
     width: 90%;
+    margin-left: 20px;
+
     display: flex;
     flex-direction: row;
     align-items: center;

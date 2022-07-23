@@ -1,6 +1,5 @@
 .copy {
-    height: 4vh;
-    width: 12%;
+    height: fit-content;
     border-radius: 1rem;
     border-style: none;
     border: solid;

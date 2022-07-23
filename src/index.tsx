@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Navigate, BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Navigate, BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 
 import './index.css';
 
@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
 
@@ -36,6 +36,6 @@ root.render(
           />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

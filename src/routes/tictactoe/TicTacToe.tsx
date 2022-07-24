@@ -69,7 +69,11 @@ function TicTacToe() {
       setHistory(prevHistory => {
         let newHistory = [...prevHistory]
         newHistory.splice(0, 1)
-        newHistory.push(players[result - 1])
+        if (players[result - 1].length === 0) {
+          newHistory.push('Jemand')
+        } else {
+          newHistory.push(players[result - 1])
+        }
         return newHistory
       })
       setGameOver(true)

@@ -56,6 +56,19 @@
         font-size: 2rem;
     }
 
+    .home-image {
+        height: 20vh;
+    }
+
+    .home p {
+        font-size: 1rem;
+        width: 70%;
+    }
+
+    .home a {
+        width: 60%;
+    }
+
     .home-text {
         margin-left: 0px;
         align-items: center;

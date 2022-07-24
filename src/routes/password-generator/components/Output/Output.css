@@ -1,8 +1,58 @@
 .output {
     height: 4vh;
-    width: 70%;
+    width: 80%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between
+}
+
+.output input {
+    width: 80%;
+    background-color: transparent;
+    border: none;
     border-bottom: solid;
+    border-color: var(--white);
+    color: var(--white);
     border-width: 0.15rem;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 400;
+}
+
+.output input:focus {
+    outline: none;
+}
+
+.output button {
+    height: 40px;
+    width: 40px;
+
+    border-radius: 1rem;
+    border-style: none;
+    border: solid;
+    border-color: var(--white);
+    border-width: 0.15rem;
+    background-color: transparent;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.output button svg {
+    font-size: 2rem;
+    color: var(--blue)
+}
+
+@media (max-width: 768px) {
+    .output {
+        width: 70%;
+    }
+
+    .output input {
+        width: 60%;
+        font-size: 1rem;
+    }
 }

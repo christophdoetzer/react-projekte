@@ -3,38 +3,32 @@ import './passwordgenerator.css';
 
 import { Checkbox } from './components/Checkbox/Checkbox';
 import { Copy } from './components/Copy/Copy';
-import { Generating } from './components/Generating/Generating';
+import { NewPassword } from './components/NewPassword/Generating';
 import { Output } from './components/Output/Output';
 import { Range } from './components/Range/Range';
 
 
 function PasswordGenerator() {
-  const [preferences, setPreferences] = React.useState({
-    includeUppercase: false,
-    includeNumbers: false,
-    includeSpecialCharacters: false,
-    range: 60
-  })
+  const [includeUppercase, setIncludeUppercase] = React.useState(false)
+  const [includeNumbers, setIncludeNumbers] = React.useState(false)
+  const [includeSpecialCharacters, setIncludeSpecialCharacters] = React.useState(false)
+
+  const setCheckboxes = [setIncludeUppercase, setIncludeNumbers, setIncludeSpecialCharacters]
+
+  const [range, setRange] = React.useState(60)
+
   const [password, setPassword] = React.useState('')
 
-  const checkCheckbox = (name: string) => {
-    setPreferences(prevPreferences => {
-      const updatedPreferences: any = {
-        ...prevPreferences,
-      }
-      updatedPreferences[name] = !updatedPreferences[name]
-      return updatedPreferences
-    })
+  const checkCheckbox = (id: number) => {
+    setCheckboxes[id](prevValue => !prevValue)
   }
 
   const changingLength = (value: number) => {
-    setPreferences(prevPreferences => {
-      const updatedPreferences = {
-        ...prevPreferences,
-        range: value,
-      }
-      return updatedPreferences
-    })
+    setRange(value)
+  }
+
+  const manualChange = (value: string) => {
+    setPassword(value)
   }
 
   const generate = () => {
@@ -43,38 +37,35 @@ function PasswordGenerator() {
     const numbers: string = '0123456789'
     const specialCharacters: string = '+#></!"§$$%&/()==??_-*.:,;'
 
-    const number = Math.floor(preferences.range / 10) + 1
-
+    const characters = [lettersUppercase, numbers, specialCharacters]
+    const checkboxes = [includeUppercase, includeNumbers, includeSpecialCharacters]
 
     let passwordString = letters
-    if (preferences.includeNumbers) {
-      passwordString += numbers
-    }
-    if (preferences.includeUppercase) {
-      passwordString += lettersUppercase
-    }
-    if (preferences.includeSpecialCharacters) {
-      passwordString += specialCharacters
+
+    for (let j = 0; j < checkboxes.length; j++) {
+      if (checkboxes[j]) {
+        passwordString += characters[j]
+      }
     }
 
-    let password: string = ''
-    for (let i = 0; i < number; i++) {
-      password += passwordString[Math.floor(Math.random() * passwordString.length)]
+    let newPassword = ''
+    for (let i = 0; i < Math.floor(range / 10) + 1; i++) {
+      newPassword += passwordString[Math.floor(Math.random() * passwordString.length)]
     }
-    setPassword(password)
+    setPassword(newPassword)
   }
   return (
     <>
       <div className="password-generator">
         <div className='result'>
-          <Output password={password} />
+          <Output password={password} change={manualChange} />
           <Copy password={password} />
         </div>
-        <Checkbox content='Include Uppercase' check={checkCheckbox} value={preferences.includeUppercase} id={'includeUppercase'} />
-        <Checkbox content='Include Numbers' check={checkCheckbox} value={preferences.includeNumbers} id={'includeNumbers'} />
-        <Checkbox content='Include Special Characters' check={checkCheckbox} value={preferences.includeSpecialCharacters} id={'includeSpecialCharacters'} />
-        <Range value={preferences.range} changing={changingLength} />
-        <Generating generate={generate} />
+        <Checkbox content='Include Uppercase' check={checkCheckbox} value={includeUppercase} id={0} />
+        <Checkbox content='Include Numbers' check={checkCheckbox} value={includeNumbers} id={1} />
+        <Checkbox content='Include Special Characters' check={checkCheckbox} value={includeSpecialCharacters} id={2} />
+        <Range value={range} changing={changingLength} />
+        <NewPassword generate={generate} />
       </div>
     </>
   );

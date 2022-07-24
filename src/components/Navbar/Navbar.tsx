@@ -29,13 +29,13 @@ export const Navbar: React.FC<Props> = (props) => {
   return (
     <nav>
       <Link to="/home" className="logo">
-        <img src='https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' alt='React logo'></img>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' alt='React Logo'></img>
 
         {width > 600 && <h1>{props.title}</h1>}
       </Link>
       <div className='links'>
-        <Link to="/todolist" className={useLocation().pathname === '/todolist' ? 'gold' : ''}>Todo List</Link>
-        <Link to="/password-generator" className={useLocation().pathname === '/password-generator' ? 'gold' : ''} >Password Generator</Link>
+        <Link to="/todolist" className={useLocation().pathname === '/todolist' ? 'gold' : ''}>Todo Liste</Link>
+        <Link to="/password-generator" className={useLocation().pathname === '/password-generator' ? 'gold' : ''} >Passwort Generator</Link>
         <Link to="/tictactoe/field" className={isOnTicTacToe ? 'gold' : ''}>Tic Tac Toe</Link>
       </div>
     </nav>

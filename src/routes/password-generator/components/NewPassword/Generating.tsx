@@ -4,6 +4,6 @@ interface Props {
 }
 export const NewPassword: React.FC<Props> = (props) => {
     return (
-        <button className="generating" onClick={() => props.generate()}>New Password</button>
+        <button className="generating" onClick={() => props.generate()}>Neues Passwort</button>
     );
 }

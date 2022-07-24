@@ -61,9 +61,9 @@ function PasswordGenerator() {
           <Output password={password} change={manualChange} />
           <Copy password={password} />
         </div>
-        <Checkbox content='Include Uppercase' check={checkCheckbox} value={includeUppercase} id={0} />
-        <Checkbox content='Include Numbers' check={checkCheckbox} value={includeNumbers} id={1} />
-        <Checkbox content='Include Special Characters' check={checkCheckbox} value={includeSpecialCharacters} id={2} />
+        <Checkbox content='Großbuchstaben' check={checkCheckbox} value={includeUppercase} id={0} />
+        <Checkbox content='Nummern' check={checkCheckbox} value={includeNumbers} id={1} />
+        <Checkbox content='Sonderzeichen' check={checkCheckbox} value={includeSpecialCharacters} id={2} />
         <Range value={range} changing={changingLength} />
         <NewPassword generate={generate} />
       </div>

@@ -13,7 +13,7 @@ export const Range: React.FC<Props> = (props) => {
 
     return (
         <div className="length">
-            <label htmlFor="range">Length: {Math.floor(props.value / 10 + 1)}</label>
+            <label htmlFor="range">Länge: {Math.floor(props.value / 10 + 1)}</label>
             <input className="range" id="range" type="range" value={props.value} onChange={handleChange} name="range" />
         </div>
     );

@@ -23,7 +23,7 @@ export const Output: React.FC<Props> = (props) => {
     return (
         <div className="output">
             <button onClick={handleClick}>{isVisible ? iconVisible : iconNotVisible}</button>
-            <input className="output-text" value={props.password} type={isVisible ? 'text' : 'password'} placeholder="Password..." name="password" onChange={handleChange} />
+            <input className="output-text" value={props.password} type={isVisible ? 'text' : 'password'} placeholder="Passwort..." name="password" onChange={handleChange} />
         </div>
     );
 }

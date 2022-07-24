@@ -5,7 +5,7 @@ interface Props {
 export const NewGame: React.FC<Props> = (props) => {
   return (
     <>
-      <button className="new-game" onClick={() => props.newGame()}>New Game</button>
+      <button className="new-game" onClick={() => props.newGame()}>Neues Spiel</button>
     </>
   )
 }

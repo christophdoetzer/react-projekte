@@ -1,14 +1,26 @@
 .result-text {
-    margin-top: 50px;
-    width: 90%;
-    margin-left: 20px;
+    width: 100%;
+    font-size: 1.3rem;
 
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.result-text svg {
+    height: 20px;
+    width: 20px;
+    margin-left: 0px;
 }
 
 .output {
     font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+    .result-text {
+        margin-left: 0px;
+        font-size: 1rem;
+    }
 }

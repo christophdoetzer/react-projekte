@@ -1,0 +1,30 @@
+.settings {
+    height: 300px;
+    width: 400px;
+
+    border: solid;
+    border-width: 0.15rem;
+    border-radius: 1rem;
+    border-color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+input {
+    background-color: transparent;
+    border-style: none;
+    border-bottom: solid;
+    border-color: var(--white);
+    border-width: 0.15rem;
+    color: var(--white);
+    font-size: 1.25rem;
+}
+
+@media (max-width: 700px) {
+    .settings {
+        width: 300px;
+    }
+}

@@ -1,4 +1,4 @@
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../../global/components/Icon/Icon";
 import './Field.css'
 
 interface Props {

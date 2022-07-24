@@ -22,7 +22,7 @@ root.render(
           <Route path="/" element={<Navigate to="/home" />} />
 
           <Route path="home" element={<Home />} />
-          <Route path="tictactoe" element={<TicTacToe />} />
+          <Route path="tictactoe/*" element={<TicTacToe />} />
           <Route path="todolist" element={<Todolist />} />
           <Route path="password-generator" element={<PasswordGenerator />} />
 

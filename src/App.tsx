@@ -17,6 +17,7 @@ function App() {
     author: 'Christoph Dötzer',
     year: new Date().getFullYear()
   }
+
   return (
     <div className="app">
       <Navbar title={informations.title} />

@@ -29,3 +29,35 @@
 
     background-color: var(--white);
 }
+
+.tictactoe-buttons {
+    width: 40%;
+    /* background-color: lightblue; */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings-button {
+    background-color: var(--gold);
+    border-style: none;
+    height: 30px;
+    width: 30px;
+    padding: 10px;
+    left: 2vh;
+
+    font-weight: 700;
+    color: var(--grey);
+    border-radius: 1rem;
+
+    box-shadow: 4px 4px 4px var(--black);
+}
+
+.settings-button svg {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-size: 2rem;
+}

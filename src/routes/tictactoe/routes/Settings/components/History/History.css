@@ -1,0 +1,22 @@
+.history {
+    background-color: transparent;
+    border: none;
+    color: var(--white);
+    font-size: 1rem;
+    padding: 5px;
+    border: solid;
+    border-color: var(--white);
+    border-width: 0.15rem;
+    border-radius: 1rem;
+
+    width: 100px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.history svg {
+    font-size: 1.5rem;
+}

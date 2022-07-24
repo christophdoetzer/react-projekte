@@ -23,3 +23,7 @@
     --blue: #039BA1;
     --gold: #D9AE5F;
 }
+
+input:focus {
+    outline: none;
+}

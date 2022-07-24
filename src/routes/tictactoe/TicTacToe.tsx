@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 
 import './tictactoe.css';
 
-import { Field } from './components/Field/Field';
+import { Field } from './routes/Field/Field';
 import { NewGame } from './components/NewGame/NewGame';
 import { Result } from './components/Result/Result';
+import { Settings } from './routes/Settings/Settings';
 
 function check(fields: number[]): number {
   const win0 = [0, 1, 2]
@@ -27,22 +29,52 @@ function check(fields: number[]): number {
 }
 
 function TicTacToe() {
+  const [history, setHistory] = React.useState<string[]>([''])
+  const [mode, setMode] = React.useState(0)
+  const [nameOfFirstPlayer, setNameOfFirstPlayer] = React.useState('')
+  const [nameOfSecondPlayer, setNameOfSecondPlayer] = React.useState('')
+
   const [result, setResult] = React.useState(0)
   const [fields, setFields] = React.useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
   const [currentPlayer, setCurrentPlayer] = React.useState(1)
   const [gameOver, setGameOver] = React.useState(false)
 
   const fieldElements = fields.map((field, i) => <Field key={i} id={i} click={click} status={field} gameOver={gameOver} />)
+  const players = [nameOfFirstPlayer, nameOfSecondPlayer]
+
+  function changeNameOfFirstPlayer(event: any) {
+    if (event.target.value.length > 16) {
+      alert("Der Name is zu lang.")
+    } else {
+      setNameOfFirstPlayer(event.target.value)
+    }
+  }
+
+  function changeNameOfSecondPlayer(event: any) {
+    if (event.target.value.length > 18) {
+      alert("Der Name is zu lang.")
+    } else {
+      setNameOfSecondPlayer(event.target.value)
+    }
+  }
+
+  function changeMode(event: any) {
+    setMode(parseInt(event.target.value))
+  }
 
   useEffect(() => {
     const result = check(fields)
     if (result !== 0) {
       setResult(result)
+      setHistory(prevHistory => {
+        let newHistory = [...prevHistory]
+        newHistory.splice(0, 1)
+        newHistory.push(players[result - 1])
+        return newHistory
+      })
       setGameOver(true)
     }
   }, [fields])
-
-
 
   function click(id: number) {
     setFields(prevFields => {
@@ -50,47 +82,64 @@ function TicTacToe() {
       newFields[id] = currentPlayer
       return newFields
     })
-
-    if (currentPlayer === 1) {
-      setCurrentPlayer(2)
-    } else if (currentPlayer === 2) {
-      setCurrentPlayer(1)
+    if (mode == 1) {
+      setCurrentPlayer(prevCurrentPlayer => prevCurrentPlayer === 1 ? 2 : 1)
+    } else if (result === 0) {
+      setFields(prevFields => computer(prevFields))
     }
   }
 
+  function computer(currentFields: number[]): number[] {
+    let freeFields: number[] = []
+    for (let i = 0; i < currentFields.length; i++) {
+      if (currentFields[i] === 0) {
+        freeFields.push(i)
+      }
+    }
 
-  // function computer(): void {
-  //   let freeFields: number[] = []
-  //   for (let i = 0; i < fields.length; i++) {
-  //     if (fields[i] === 0) {
-  //       freeFields.push(i)
-  //     }
-  //   }
+    const random = Math.floor(Math.random() * freeFields.length)
+    const index = freeFields[random]
+    const newFields = [...currentFields]
+    newFields[index] = 2
+    return newFields
+  }
 
-  //   const random = Math.floor(Math.random() * freeFields.length)
-  //   setFields(prevFields => {
-  //     const index = freeFields[random]
-  //     const newFields = [...prevFields]
-  //     newFields[index] = 2
-  //     return newFields
-  //   })
-  // }
-
+  let navigate = useNavigate()
   function newGame() {
     setFields([0, 0, 0, 0, 0, 0, 0, 0, 0])
     setGameOver(false)
     setResult(0)
+    navigate('field')
   }
 
   return (
     <div className="tictactoe">
       <div className="result">
-        <Result winner={result} />
+        <Result winner={result} playerOne={nameOfFirstPlayer} playerTwo={nameOfSecondPlayer} />
       </div>
-      <div className='fields'>
-        {fieldElements}
+      <Routes>
+        <Route path="field" element={
+          <div className='fields'>
+            {fieldElements}
+          </div>
+        }>
+        </Route>
+        <Route path="settings" element={
+          <Settings history={history} result={result} playerOne={nameOfFirstPlayer} playerTwo={nameOfSecondPlayer} changeMode={changeMode} mode={mode} changePlayerOne={changeNameOfFirstPlayer} changePlayerTwo={changeNameOfSecondPlayer} />
+        }>
+        </Route>
+      </Routes>
+      <div className='tictactoe-buttons'>
+        <NewGame newGame={newGame} />
+        <Link to={useLocation().pathname === '/tictactoe/field' ? 'settings' : 'field'} className="settings-button">
+          {
+            useLocation().pathname === '/tictactoe/field' ?
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2"><path d="M3 5h4m14 0H11m-8 7h12m6 0h-2M3 19h2m16 0H9" /><circle cx="9" cy="5" r="2" /><circle cx="17" cy="12" r="2" /><circle cx="7" cy="19" r="2" /></g></svg>
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2"><path d="M19 3v4m0 14V11m-7-8v12m0 6v-2M5 3v2m0 16V9" /><circle cx="19" cy="9" r="2" transform="rotate(90 19 9)" /><circle cx="12" cy="17" r="2" transform="rotate(90 12 17)" /><circle cx="5" cy="7" r="2" transform="rotate(90 5 7)" /></g></svg>
+          }
+        </Link>
       </div>
-      <NewGame newGame={newGame} />
     </div>
   );
 }

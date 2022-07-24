@@ -18,6 +18,14 @@ export const Navbar: React.FC<Props> = (props) => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+  let isOnTicTacToe = false;
+  if (useLocation().pathname === '/tictactoe/settings') {
+    isOnTicTacToe = true;
+  }
+  if (useLocation().pathname === '/tictactoe/field') {
+    isOnTicTacToe = true;
+  }
+
   return (
     <nav>
       <Link to="/home" className="logo">
@@ -28,7 +36,7 @@ export const Navbar: React.FC<Props> = (props) => {
       <div className='links'>
         <Link to="/todolist" className={useLocation().pathname === '/todolist' ? 'gold' : ''}>Todo List</Link>
         <Link to="/password-generator" className={useLocation().pathname === '/password-generator' ? 'gold' : ''} >Password Generator</Link>
-        <Link to="/tictactoe" className={useLocation().pathname === '/tictactoe' ? 'gold' : ''}>Tic Tac Toe</Link>
+        <Link to="/tictactoe" className={isOnTicTacToe ? 'gold' : ''}>Tic Tac Toe</Link>
       </div>
     </nav>
   )

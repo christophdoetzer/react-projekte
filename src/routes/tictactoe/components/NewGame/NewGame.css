@@ -1,7 +1,7 @@
 .new-game {
-    background-color: var(--gold);
-    border-style: none;
-    height: fit-content;
+    background-color: var(--gold) !important;
+    border-style: none !important;
+    height: fit-content !important;
     padding: 10px;
 
     font-size: 1.75rem;

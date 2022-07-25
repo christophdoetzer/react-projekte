@@ -80,32 +80,40 @@ function TicTacToe() {
     }
   }, [fields])
 
+  useEffect(() => {
+    newGame()
+  }, [mode])
+
   function click(id: number) {
     setFields(prevFields => {
       let newFields = [...prevFields]
-      newFields[id] = currentPlayer
+      newFields[id] = mode === 0 ? 1 : currentPlayer
       return newFields
     })
     if (mode == 1) {
       setCurrentPlayer(prevCurrentPlayer => prevCurrentPlayer === 1 ? 2 : 1)
-    } else if (result === 0) {
-      setFields(prevFields => computer(prevFields))
+    } else if (mode === 0) {
+      setGameOver(true)
+      setTimeout(() =>  {setFields(prevFields => computer(prevFields)); setGameOver(false)}, Math.floor(Math.random() * 300))
     }
   }
 
   function computer(currentFields: number[]): number[] {
-    let freeFields: number[] = []
-    for (let i = 0; i < currentFields.length; i++) {
+    if (check(currentFields) == 0) {
+      let freeFields: number[] = []
+      for (let i = 0; i < currentFields.length; i++) {
       if (currentFields[i] === 0) {
         freeFields.push(i)
       }
-    }
+      }
 
-    const random = Math.floor(Math.random() * freeFields.length)
-    const index = freeFields[random]
-    const newFields = [...currentFields]
-    newFields[index] = 2
-    return newFields
+      const random = Math.floor(Math.random() * freeFields.length)
+      const index = freeFields[random]
+      const newFields = [...currentFields]
+      newFields[index] = 2
+      return newFields
+    }
+    return currentFields
   }
 
   let navigate = useNavigate()

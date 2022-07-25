@@ -36,7 +36,7 @@ export const Navbar: React.FC<Props> = (props) => {
       <div className='links'>
         <Link to="/todolist" className={useLocation().pathname === '/todolist' ? 'gold' : ''}>Todo Liste</Link>
         <Link to="/password-generator" className={useLocation().pathname === '/password-generator' ? 'gold' : ''} >Passwort Generator</Link>
-        <Link to="/tictactoe/field" className={isOnTicTacToe ? 'gold' : ''}>Tic Tac Toe</Link>
+        <Link to="/tictactoe/settings" className={isOnTicTacToe ? 'gold' : ''}>Tic Tac Toe</Link>
       </div>
     </nav>
   )
